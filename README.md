@@ -3,9 +3,10 @@
 该项目为了试用 `github` 的 `Actions` 和 `Pages` 自动部署静态页面。  
 
 1. `package.json`增加`homepage`字段，值为项目部署`uri`
-2. 生成令牌`点击头像 -> Settins -> Developer settings -> Personal access tokens -> Generate new token`，令牌包含`repo`和`workflow`权限
-3. 复制token
-4. 上传项目到`github`
+2. `点击头像 -> Settins -> Developer settings -> Personal access tokens -> Generate new token`，需要 `repo` & `workflow` 权限，生成复制token
+3. 上传项目
+4. `Settings -> Secrets -> New repository secret` 变量名脚本使用
+5. `.github/workflows/ci.yml`
 
 ## Vue 3 + Typescript + Vite
 
