@@ -1,21 +1,15 @@
 # vv3
 
-该项目为了试用 `github` 的 `Actions` 和 `Pages` 自动部署静态页面。  
+该项目使用 `github` 的 `Actions` 和 `Pages` 自动部署静态页面。   
+`vite` 提供的[部署静态站点](https://cn.vitejs.dev/guide/static-deploy.html)方法。
 
-1. `package.json`增加`homepage`字段，值为项目部署`uri`
-2. `Settins -> Developer settings -> Personal access tokens -> Generate new token`，需要 `repo` & `workflow` 权限，生成复制token，yml脚本中的action要用到repo权限
-3. 上传项目
-4. `Settings -> Secrets -> New repository secret` 将之前有repo权限的token添加进去，yml脚本要使用
-5. 编写脚本`.github/workflows/ci.yml`
+## 步骤
 
-## Vue 3 + Typescript + Vite
-
-This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-* [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+1. 项目的`package.json`文件增加`homepage`字段，值为项目部署`uri`
+2. 获取一个拥有项目`repo`权限的`token`,编写`.yml`脚本时提供给需要使用部署功能的`action`使用
+  + 路径`Settins -> Developer settings -> Personal access tokens -> Generate new token`
+  + (注意需要有`repo`&`workflow`权限)
+3. 在`github`增加`secret`变量,`.yml`脚本要用到
+  + 路径`Settings -> Secrets -> New repository secret`
+4. 编写`.yml`脚本,示例可查看项目`.github/workflows/ci.yml`
+5. `push`代码
