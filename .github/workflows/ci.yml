@@ -1,4 +1,4 @@
-name: GitHub Actions Build and Deploy This Repo
+name: GitHub Actions Build and Deploy
 on:
   push:
     branches:
@@ -19,5 +19,5 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         ACCESS_TOKEN: ${{ secrets.VV3 }}
-        BRANCH: online
+        BRANCH: gh-pages
         FOLDER: dist
