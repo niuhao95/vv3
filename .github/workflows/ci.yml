@@ -1,14 +1,12 @@
-name: pnpm Workflow
+name: pnpm Example Workflow
 on:
   push:
-    branches:
-      - main
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        node-version: [14]
+        node-version: [15]
     steps:
     - uses: actions/checkout@v2
     - uses: pnpm/action-setup@v2.0.1
@@ -19,13 +17,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    - name: Install dependencies & Build
-      run: |
-        pnpm install
-        pnpm build
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        ACCESS_TOKEN: ${{ secrets.VV3 }}
-        BRANCH: gh-pages
-        FOLDER: dist
+    - name: Install dependencies
+      run: pnpm install
