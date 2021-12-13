@@ -1,7 +1,6 @@
 # vv3
 
-使用 `github` 的 `Actions` 和 `Pages` 自动部署静态页面。   
-更多 `vite` 提供的[部署静态站点](https://cn.vitejs.dev/guide/static-deploy.html)方法。
+使用 `github` 的 `Actions` 和 `Pages` 自动部署[静态页面](https://hao951029.github.io/vv3)。   
 
 ## 步骤
 
