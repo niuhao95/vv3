@@ -31,3 +31,32 @@ export default defineConfig({
     }
 })
 ```
+
+### $attrs
+
+`<script setup>` 可以和普通的 `<script>` 一起使用 | [文档解释](https://v3.cn.vuejs.org/api/sfc-script-setup.html#%E4%B8%8E%E6%99%AE%E9%80%9A%E7%9A%84-script-%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8)
+
+```vue
+<script lang="ts">
+// 声明额外的选项
+export default {
+    inheritAttrs: false
+}
+</script>
+
+<script setup lang="ts">
+defineProps <{
+    modelValue: number | string
+}>()
+
+// 解决: Property 'value' does not exist on type 'EventTarget'.
+const handleInputChange = (event: Event) => (event.target as HTMLInputElement).value
+</script>
+
+<template>
+  <div>
+    <!-- attrs: https://labs.thisdot.co/blog/build-advanced-components-in-vue-3-using-usdattrs -->
+    <input v-bind="$attrs" type="range" :value="modelValue" @input="$emit('update:modelValue', handleInputChange($event))">
+  </div>
+</template>
+```
