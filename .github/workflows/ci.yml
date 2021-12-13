@@ -1,21 +1,23 @@
-name: pnpm Example Workflow
+name: GitHub Actions Build and Deploy
 on:
   push:
+    branches:
+      - main
 jobs:
-  build:
-    runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        node-version: [15]
+  build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: pnpm/action-setup@v2.0.1
+    - name: Checkout
+      uses: actions/checkout@v2
       with:
-        version: 6.20.3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+        persist-credentials: false
+    - name: Install and Build
+      run: |
+        npm install
+        npm run build
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - name: Install dependencies
-      run: pnpm install
+        ACCESS_TOKEN: ${{ secrets.VV3 }}
+        BRANCH: gh-pages
+        FOLDER: dist
