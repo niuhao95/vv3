@@ -12,3 +12,22 @@
   + 路径`Settings -> Secrets -> New repository secret`
 4. 编写`.yml`脚本,示例可查看项目`.github/workflows/ci.yml`
 5. `push`代码,触发`Actions`
+
+## 问题记录
+
+### 配置 Alias
+
+```js
+// vite.config.ts
+import {
+    resolve
+} from "path" // 找不到 path 模块报错 -> pnpm add @types/node -D
+
+export default defineConfig({
+    resolve: {
+        alias: {
+            '@': resolve(__dirname, './src')
+        },
+    }
+})
+```
